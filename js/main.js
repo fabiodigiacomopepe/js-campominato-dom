@@ -37,12 +37,18 @@ pulsantePlay.addEventListener("click", creaGriglia);
 // Collego COSTANTE a elemento "containerGriglia" preso dall'HTML
 const containerGriglia = document.getElementById("containerGriglia");
 
+// Collego COSTANTE a elemento "layer" preso dall'HTML
+const layer = document.querySelector(".layer");
+
 
 
 // FUNZIONI
 // Funzione legata a pulsante PLAY
 function creaGriglia() {
 
+    // Rimuovo classe active al layer
+    layer.classList.remove("active");
+    
     // Pulisco container (reset)
     containerGriglia.innerHTML = "";
     
@@ -102,6 +108,7 @@ function creaGriglia() {
                     elementoCella.classList.add("cambioColoreBomba");
                     alert("GAME OVER. HAI BECCATO LA BOMBA!");
                     alert("Il tuo punteggio è: " + punti);
+                    layer.classList.add("active");
                 } else if (!numeriCasuali.includes(i)) {
                     punti++;
                     console.log("punti: " + punti);
