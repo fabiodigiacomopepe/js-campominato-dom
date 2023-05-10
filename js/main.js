@@ -89,12 +89,13 @@ function creaGriglia() {
             // Creo elemento DIV
             const elementoCella = document.createElement("div");
 
-            // Agiiungo classe CELLA e classe che varia in base a DIFFICOLTA' selezionata
+            // Aggiungo classe CELLA e classe che varia in base a DIFFICOLTA' selezionata
             elementoCella.classList.add("cella", classe);
 
             // Aggiungo NUMERO in cella
             elementoCella.innerHTML = i;
 
+            // Setto punti a 0 (situazione base)
             punti = 0;
         
             // Collego EVENTO al click della CELLA
@@ -102,15 +103,18 @@ function creaGriglia() {
             function eventoAlClickCella() {
                 console.log(i);
 
+                // Se arrey numeri casuali CONTIENE numero cella cliccata
                 if (numeriCasuali.includes(i)) {
                     console.log("GAME OVER. HAI BECCATO LA BOMBA! Punteggio: " + punti);
-                    elementoCella.classList.add("cambioColoreBomba");
-                    alert("GAME OVER. HAI BECCATO LA BOMBA!");
-                    alert("Il tuo punteggio è: " + punti);
-                    layer.classList.add("active");
+                    elementoCella.classList.add("cambioColoreBomba");   // Cambia colore (ROSSO)
+                    alert("GAME OVER. HAI BECCATO LA BOMBA!");          // Mostra ALERT che avvisa di game over
+                    alert("Il tuo punteggio è: " + punti);              // Mostra punteggio
+                    layer.classList.add("active");                      // Impedisci di cliccare su altre celle (aggiunta layer)
+
+                // Se arrey numeri casuali NON contiene numero cella cliccata E se numero non è già stato cliccato   
                 } else if (!numeriCasuali.includes(i) && !elementoCella.classList.contains('cambioColore')) {
-                    elementoCella.classList.add("cambioColore");
-                    punti++;
+                    elementoCella.classList.add("cambioColore");        // Cambia colore (AZZURRO)
+                    punti++;                                            // Incrementa punteggio
                     console.log("punti: " + punti);
                 }
             }
