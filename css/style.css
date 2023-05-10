@@ -87,6 +87,11 @@ main {
     background-color: rgb(101, 169, 241);
 }
 
+/* Regole una volta cliccata cella con BOMBA */
+.cambioColoreBomba {
+    background-color: rgb(225, 44, 44);
+}
+
 /* Regole footer */
 footer {
     background-color: white;
