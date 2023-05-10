@@ -48,7 +48,7 @@ function creaGriglia() {
 
     // Rimuovo classe active al layer
     layer.classList.remove("active");
-    
+
     // Pulisco container (reset)
     containerGriglia.innerHTML = "";
     
@@ -100,7 +100,6 @@ function creaGriglia() {
             // Collego EVENTO al click della CELLA
             elementoCella.addEventListener("click", eventoAlClickCella);
             function eventoAlClickCella() {
-                elementoCella.classList.add("cambioColore");
                 console.log(i);
 
                 if (numeriCasuali.includes(i)) {
@@ -109,7 +108,8 @@ function creaGriglia() {
                     alert("GAME OVER. HAI BECCATO LA BOMBA!");
                     alert("Il tuo punteggio è: " + punti);
                     layer.classList.add("active");
-                } else if (!numeriCasuali.includes(i)) {
+                } else if (!numeriCasuali.includes(i) && !elementoCella.classList.contains('cambioColore')) {
+                    elementoCella.classList.add("cambioColore");
                     punti++;
                     console.log("punti: " + punti);
                 }
