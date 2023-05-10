@@ -1,0 +1,105 @@
+/* Regole generali */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #7fffd4;
+    overflow:hidden;
+}
+
+/* Regole header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: white;
+    height: 80px;
+}
+
+/* Regole logo */
+img {
+    width: 50px;
+}
+
+/* Regole titolo */
+h1 {
+    display: inline-block;
+    position: relative;
+    bottom: 12px;
+    left: 5px;
+}
+
+/* Regole selettore difficoltà */
+#easyMediumHard {
+    width: 150px;
+}
+
+/*Regole pulsanti */
+#pulsantePlay {
+    width: 55px;
+}
+
+/* Regole main */
+main {
+    height: calc(100vh - 140px);
+    overflow: auto;
+}
+
+/* Reegole griglia */
+.griglia {
+    border: 2px solid black;
+    width: 30%;
+    margin: 25px auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* Regole generali cella */
+.cella {
+    border: 1px solid black;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Cella difficoltà EASY */
+.cellaEasy{
+    width: 10%;
+}
+
+/* Cella difficoltà MEDIUM */
+.cellaMedium {
+    width: calc(100% / 9);
+}
+
+/* Cella difficoltà HARD */
+.cellaHard {
+    width: calc(100% / 7);
+}
+
+/* Regole una volta cliccata cella */
+.cambioColore {
+    background-color: rgb(101, 169, 241);
+}
+
+/* Regole footer */
+footer {
+    background-color: white;
+    height: 60px;
+    width: 100%;
+    line-height: 60px;
+}
+
+footer div {
+    margin-left: 20px;
+}
+
+footer span {
+    text-decoration: underline;
+    color:blueviolet;
+}
