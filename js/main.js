@@ -53,29 +53,29 @@ function creaGriglia() {
     containerGriglia.innerHTML = "";
     
     // Creo elemento DIV
-    const elementoDiv = document.createElement("div");
+    const elementoDivGriglia = document.createElement("div");
 
     // Assegno a elemento DIV la classe GRIGLIA
-    elementoDiv.classList.add("griglia");
+    elementoDivGriglia.classList.add("griglia");
 
     // Leggo e segno in una costante "difficolta" il VALORE della DIFFICOLTA'
     const difficolta = document.getElementById("easyMediumHard").value;
 
     if (difficolta === "easy") {                                            // SE difficoltà è EASY
-        const elementoDiv = creaElementiGriglia("100", "cellaEasy");        // Creo contatore per 100 celle
+        creaElementiGriglia("100", "cellaEasy");                            // Creo contatore per 100 celle
         numeroMassimoGenerato = "100";                                      // Setto numero massino casuale generato a 100
 
     } else if (difficolta === "medium") {                                   // SE difficoltà è MEDIUM
-        const elementoDiv = creaElementiGriglia("81", "cellaMedium");       // Creo contatore per 81 celle
+        creaElementiGriglia("81", "cellaMedium");                           // Creo contatore per 81 celle
         numeroMassimoGenerato = "81";                                       // Setto numero massino casuale generato a 81
     }
      else {                                                                 // ALTRIMENTI (se difficoltà è HARD)
-        const elementoDiv = creaElementiGriglia("49", "cellaHard");         // Creo contatore per 49 celle
+        creaElementiGriglia("49", "cellaHard");                             // Creo contatore per 49 celle
         numeroMassimoGenerato = "49";                                       // Setto numero massino casuale generato a 49
     }
 
     // Appendo elemento DIV con classe GRIGLIA contenente tutto, al CONTAINER GRIGLIA
-    containerGriglia.append(elementoDiv);
+    containerGriglia.append(elementoDivGriglia);
 
     // Creo costante che genera attraverso una FUNZIONE, 16 numeri casuali
     const numeriCasuali = creoNumeriCasuali(16);
@@ -116,7 +116,7 @@ function creaGriglia() {
             }
         
             // Appendo la cella al DIV griglia principale
-            elementoDiv.append(elementoCella);
+            elementoDivGriglia.append(elementoCella);
         }
     }
 
