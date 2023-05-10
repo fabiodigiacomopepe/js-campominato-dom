@@ -101,7 +101,8 @@ main {
 }
 
 /* Regole una volta cliccata cella con BOMBA */
-.cambioColoreBomba {
+.cambioColoreBomba,
+.inesplosa {
     background-color: rgb(225, 44, 44);
 }
 

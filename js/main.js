@@ -90,7 +90,7 @@ function creaGriglia() {
             const elementoCella = document.createElement("div");
 
             // Aggiungo classe CELLA e classe che varia in base a DIFFICOLTA' selezionata
-            elementoCella.classList.add("cella", classe);
+            elementoCella.classList.add("cella", "n"+[i], classe);
 
             // Aggiungo NUMERO in cella
             elementoCella.innerHTML = i;
@@ -110,6 +110,7 @@ function creaGriglia() {
                     alert("GAME OVER. HAI BECCATO LA BOMBA!");          // Mostra ALERT che avvisa di game over
                     alert("Il tuo punteggio è: " + punti);              // Mostra punteggio
                     layer.classList.add("active");                      // Impedisci di cliccare su altre celle (aggiunta layer)
+                    rivelaBombe();                                      // Rilevo le altre 15 bombe       
 
                 // Se arrey numeri casuali NON contiene numero cella cliccata E se numero non è già stato cliccato   
                 } else if (!numeriCasuali.includes(i) && !elementoCella.classList.contains('cambioColore')) {
@@ -148,4 +149,22 @@ function creaGriglia() {
     function numeroCasuale() {
         return Math.floor(Math.random() * numeroMassimoGenerato) + 1;       //numeroMassimoGenerato CAMBIA a seconda DIFFICOLTA'
     }
+
+    // Rilevo bombo
+    function rivelaBombe() {
+        // Creo contatore
+        for (let i = 1; i <= numeroMassimoGenerato; i++) {
+            // Prendo il contenuto da tutte le celle presenti
+            let numeroCella = parseInt(document.querySelector("div.n" + [i]).innerHTML);
+            let numeroCellaDiv = document.querySelector("div.n" + [i]);
+            console.log(numeroCella);
+            console.log(numeriCasuali);
+
+            // SE contenuto cella in griglia è presente in array di numeri generati (bombe)
+            if (numeriCasuali.includes(numeroCella)) {
+                numeroCellaDiv.classList.add("inesplosa");    // cella diventa rossa (aggiungo classe inesplosa)
+            }
+        }
+    }
+
 }
