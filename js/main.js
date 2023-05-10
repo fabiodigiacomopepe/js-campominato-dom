@@ -75,6 +75,44 @@ function creaGriglia() {
     const numeriCasuali = creoNumeriCasuali(16);
     console.log(numeriCasuali);
 
+    // Creo elemeni griglia
+    function creaElementiGriglia(numeroElementi, classe) {
+
+        // Creo contatore
+        for (let i = 1; i <= numeroElementi; i++) {
+            // Creo elemento DIV
+            const elementoCella = document.createElement("div");
+
+            // Agiiungo classe CELLA e classe che varia in base a DIFFICOLTA' selezionata
+            elementoCella.classList.add("cella", classe);
+
+            // Aggiungo NUMERO in cella
+            elementoCella.innerHTML = i;
+
+            punti = 0;
+        
+            // Collego EVENTO al click della CELLA
+            elementoCella.addEventListener("click", eventoAlClickCella);
+            function eventoAlClickCella() {
+                elementoCella.classList.add("cambioColore");
+                console.log(i);
+
+                if (numeriCasuali.includes(i)) {
+                    console.log("GAME OVER. HAI BECCATO LA BOMBA! Punteggio: " + punti);
+                    elementoCella.classList.add("cambioColoreBomba");
+                    alert("GAME OVER. HAI BECCATO LA BOMBA!");
+                    alert("Il tuo punteggio è: " + punti);
+                } else if (!numeriCasuali.includes(i)) {
+                    punti++;
+                    console.log("punti: " + punti);
+                }
+            }
+        
+            // Appendo la cella al DIV griglia principale
+            elementoDiv.append(elementoCella);
+        }
+    }
+
     // Creo numeri casuali
     function creoNumeriCasuali(max) {
         // Creo ARRAY VUOTO
@@ -98,43 +136,5 @@ function creaGriglia() {
     // Creo numero casuale in base al livello di difficoltà
     function numeroCasuale() {
         return Math.floor(Math.random() * numeroMassimoGenerato) + 1;       //numeroMassimoGenerato CAMBIA a seconda DIFFICOLTA'
-    }
-
-    // Creo elemeni griglia
-    function creaElementiGriglia(numeroElementi, classe) {
-
-        // Creo contatore
-        for (let i = 1; i <= numeroElementi; i++) {
-            // Creo elemento DIV
-            const elementoCella = document.createElement("div");
-
-            // Agiiungo classe CELLA e classe che varia in base a DIFFICOLTA' selezionata
-            elementoCella.classList.add("cella", classe);
-
-            // Aggiungo NUMERO in cella
-            elementoCella.innerHTML = i;
-        
-            // Collego EVENTO al click della CELLA
-            elementoCella.addEventListener("click", eventoAlClickCella);
-            function eventoAlClickCella() {
-                elementoCella.classList.add("cambioColore");
-                console.log(i);
-
-                punti = 0;
-                punto = 1;
-
-                if (numeriCasuali.includes(i)) {
-                    console.log("GAME OVER. HAI BECCATO LA BOMBA!");
-                    elementoCella.classList.add("cambioColoreBomba");
-                    alert("GAME OVER. HAI BECCATO LA BOMBA!");
-                } else if (!numeriCasuali.includes(i)) {
-                    punti = punti + punto;
-                    console.log("punti: " + punti);
-                }
-            }
-        
-            // Appendo la cella al DIV griglia principale
-            elementoDiv.append(elementoCella);
-        }
     }
 }
